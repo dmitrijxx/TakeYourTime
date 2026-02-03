@@ -1,0 +1,9 @@
+.vscode/
+
+*.iml
+/.idea/
+
+**/db.sqlite
+**/settings.yml
+
+*.pdf

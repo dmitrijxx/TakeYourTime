@@ -1,0 +1,40 @@
+<form (ngSubmit)="onSubmit()">
+    <h2 mat-dialog-title>{{ absenceExists ? 'Abwesenheit bearbeiten' : 'New Absence' }}</h2>
+
+    <mat-dialog-content>
+        <mat-form-field>
+            <mat-label>Abwesenheitsart</mat-label>
+            <mat-select [(ngModel)]="absence.absenceType" name="absenceType" required>
+                <mat-option *ngFor="let type of absenceTypes" [value]="type">{{getAbsenceTypeLabel(type)}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+    
+        <mat-form-field>
+            <input matInput [(ngModel)]="absence.username" name="username" placeholder="Username" disabled="true" required>
+        </mat-form-field>
+    
+        <mat-form-field *ngIf="!noStandInNeeded()">
+            <mat-label>Vertretung</mat-label>
+            <mat-select [(ngModel)]="absence.standInUsername" name="standInUsername" required>
+                <mat-option *ngFor="let user of standInUsernames" [value]="user">{{user}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+    
+        <mat-form-field>
+            <input matInput [matDatepicker]="startPicker" [(ngModel)]="absence.startDate" name="startDate" placeholder="Start Date" required>
+            <mat-datepicker-toggle matSuffix [for]="startPicker"></mat-datepicker-toggle>
+            <mat-datepicker #startPicker></mat-datepicker>
+        </mat-form-field>
+        
+        <mat-form-field>
+            <input matInput [matDatepicker]="endPicker" [(ngModel)]="absence.endDate" name="endDate" placeholder="End Date" required>
+            <mat-datepicker-toggle matSuffix [for]="endPicker"></mat-datepicker-toggle>
+            <mat-datepicker #endPicker></mat-datepicker>
+        </mat-form-field>
+    </mat-dialog-content>
+
+    <mat-dialog-actions>
+        <button mat-button type="submit">Speichern</button>
+        <button mat-button type="button" (click)="onCancel()">Abbrechen</button>
+    </mat-dialog-actions>
+</form>

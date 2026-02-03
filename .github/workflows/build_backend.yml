@@ -1,0 +1,37 @@
+name: Build (& Test) Backend
+
+on:
+  push:
+    branches:
+      - '*'
+    paths:
+      - 'backend/**'
+
+jobs:
+  build_backend:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    
+    steps:
+    - name: Checkout Backend
+      uses: actions/checkout@v4
+      with:
+        sparse-checkout: |
+          backend
+          
+    - name: Setup Java JDK
+      uses: actions/setup-java@v3.13.0
+      with:
+        java-version: '21'
+        distribution: 'oracle'
+        cache: 'maven'
+
+    - name: Build with Maven
+      run: |
+        cd backend
+        mvn -B package --file pom.xml
+
+    - name: Test with Maven
+      run: |
+        cd backend
+        mvn test

@@ -1,0 +1,51 @@
+server:
+  port: 8080
+  error:
+    include-message: always
+    include-binding-errors: always
+  
+default:
+  application:
+    name: TakeYourTime
+    short: TYT
+  admin:
+    username: admin
+    password: admin
+  departmentname: DefaultDepartment
+  date-time-format: "yyyy-MM-dd"
+
+spring:
+  main:
+    allow-bean-definition-overriding: true
+    allow-circular-references: true
+  config:
+    import: optional:file:./data/settings.yml
+  docker:
+    compose:
+      file: ./docker-compose.yml
+  servlet:
+    multipart:
+      max-file-size: 5MB
+  datasource:
+    driverClassName: org.sqlite.JDBC
+    url: jdbc:sqlite:./data/db.sqlite
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.community.dialect.SQLiteDialect
+        format_sql: true
+    show-sql: true
+  security:
+    encoding-strength: 10
+    url-patterns:
+      api: "/api/v1/**"
+      auth: "/api/v1/auth/**"
+    cors:
+      allowed-origins: "*"
+      allowed-methods: "GET,POST,UPDATE,DELETE,OPTIONS"
+      allowed-headers: "Authorization,Cache-Control,Content-Type"
+    jwt:
+      secret: "TakeYourTime"
+      expiration-ms: 1800000

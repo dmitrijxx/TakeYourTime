@@ -1,0 +1,24 @@
+<table class="admin-table">
+    <thead>
+        <tr>
+            <th *ngFor="let column of columns">{{ column.label }}</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let entity of entities">
+            <td *ngFor="let column of columns">{{ entity[column.key] }}</td>
+            <td>
+                <ng-container *ngIf="isAdmin == true; else supervisorView">
+                    <button class="approve-button" *ngIf="id == 'absences' && !entity.isApproved" (click)="actionEntity(entity.id)">Genehmigen</button>
+                    <button class="edit-button" (click)="editEntity(entity.id)">Bearbeiten</button>
+                    <button class="delete-button" (click)="deleteEntity(entity.id)">Löschen</button>
+                </ng-container>
+                
+                <ng-template #supervisorView>
+                    <button class="approve-button" *ngIf="id == 'absences' && !entity.isApproved" (click)="actionEntity(entity.id)">Genehmigen</button>
+                    <button class="edit-button" *ngIf="id != 'absences' || !entity.isApproved" (click)="editEntity(entity.id)">Bearbeiten</button>
+                </ng-template>
+            </td>
+        </tr>
+    </tbody>
+</table>

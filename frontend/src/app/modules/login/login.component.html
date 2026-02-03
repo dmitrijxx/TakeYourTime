@@ -1,0 +1,21 @@
+<div class="login-container">
+  <img src="../../../assets/login-img/login-user-icon.png">
+  <h2>Login</h2>
+  <div>
+    <form (ngSubmit)="onSubmit()">
+      <mat-dialog-content>
+        <mat-form-field>
+          <input matInput placeholder="Benutzername" [formControl]="username" required>
+          <mat-error *ngIf="username.invalid">Bitte Benutzernamen angeben!</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="Passwort" [formControl]="password" type="password" required>
+          <mat-error *ngIf="password.invalid">Bitte Passwort angeben!</mat-error>
+        </mat-form-field>
+      </mat-dialog-content>
+      <div>
+        <button mat-button type="submit">Login</button>
+      </div>
+    </form>
+  </div>
+</div>

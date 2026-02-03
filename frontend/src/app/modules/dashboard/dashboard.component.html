@@ -1,0 +1,26 @@
+<mat-sidenav-container class="sidenav-container">
+    <mat-sidenav #sidenav [mode]="this.sidenavService.isSidenavMode" class="sidenav" [(opened)]="this.sidenavService.isSidenavOpen">
+        <div class="stats">
+            <h3>Infos</h3>
+            <p>Urlaubstage: {{ usedHolidays }} / {{ holidays }}</p>
+            <p>Sonderurlaub: {{ usedSpecialLeave }} / {{ specialLeave }}</p>
+            <p>Krankheitstage: {{ sickDays }}</p>
+            <p>Unbezahlter Urlaub: {{ unpaidLeave }}</p>
+        </div>
+
+        <button mat-button class="openAbsenceDialogButton" (click)="openAbsenceDialog()">Neue Abwesenheit</button>
+
+        <div class="absence-info" *ngIf="currentAbsence">
+            <h3>Current Absence</h3>
+            <p>Date: {{ currentAbsence.date }}</p>
+            <p>Reason: {{ currentAbsence.reason }}</p>
+            <p>Duration: {{ currentAbsence.duration }}</p> <!--TODO:-->
+        </div>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+        <div id="mainview">
+            <full-calendar [options]="calendarOptions" class="calendar" #calendar></full-calendar>
+        </div>
+    </mat-sidenav-content>
+</mat-sidenav-container>

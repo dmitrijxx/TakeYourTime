@@ -1,0 +1,12 @@
+<mat-toolbar class="nav">
+  <button mat-button (click)="toggleSidenav()" *ngIf="isLoggedIn()" class="menuButton">☰</button>
+  <h1 routerLink="/" class="application-title">TakeYourTime</h1>
+  <span class="spacer"></span>
+  <button mat-icon-button class="white-icon" *ngIf="isLoggedIn() && shouldSeeAdminTab" routerLink="/admin">
+    <mat-icon>manage_accounts</mat-icon>
+  </button>
+  <button mat-icon-button class="white-icon" *ngIf="isLoggedIn()" (click)="logout()">
+    <mat-icon>logout</mat-icon>
+  </button>
+</mat-toolbar>
+<router-outlet></router-outlet>

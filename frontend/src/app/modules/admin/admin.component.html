@@ -1,0 +1,29 @@
+<mat-sidenav-container class="sidenav-container">
+    <mat-sidenav #sidenav class="sidenav" [mode]="this.sidenavService.isSidenavMode"
+        [(opened)]="this.sidenavService.isSidenavOpen">
+        <mat-nav-list>
+            <a mat-list-item routerLink="/admin/absences" routerLinkActive="active">Abwesenheit</a>
+            <a mat-list-item routerLink="/admin/users" routerLinkActive="active">Mitarbeiter</a>
+            <a mat-list-item routerLink="/admin/departments" *ngIf="isCurrentUserAdmin()" routerLinkActive="active">Abteilungen</a>
+        </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <div class="content">
+            <mat-toolbar class="admin-nav">
+                <div class="center">
+                    <input type="text" placeholder="Suchen..." [(ngModel)]="searchTerm"
+                        (ngModelChange)="searchCallback()" />
+                </div>
+                <span class="spacer"></span>
+                <div class="right">
+                    <button mat-button class="buttonForAll" *ngIf="addEntityButtonText != undefined && canAddCategory()"
+                        (click)="addCallback()">{{ addEntityButtonText }}</button>
+                </div>
+            </mat-toolbar>
+            <hr>
+            <app-management [id]="id" [entities]="searchEntities ?? entities" [columns]="columns" [actionEntity]="actionCallback"
+                [editEntity]="editCallback" [deleteEntity]="deleteCallback">
+            </app-management>
+        </div>
+    </mat-sidenav-content>
+</mat-sidenav-container>

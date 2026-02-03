@@ -1,0 +1,48 @@
+.sidenav {
+  width: 250px;
+  padding: 20px;
+  background-color: #f5f5f5;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+  height: 100vh;
+  overflow: auto;
+
+  .stats, .absence-info {
+    margin-bottom: 20px;
+
+    h3 {
+      margin-bottom: 10px;
+      color: #333;
+      font-size: 18px;
+    }
+
+    p {
+      margin-bottom: 5px;
+      color: #666;
+      font-size: 14px;
+    }
+  }
+}
+.sidenav-container .openAbsenceDialogButton{
+  background-color: rgb(44,62,80);
+  color: #f5f5f5;
+}
+.mat-sidenav-content {
+  margin: 1% 1%;
+  padding: 1 % 2%;
+  border-radius: 20px;
+  border: 2px solid;
+}
+ .calendar {
+  margin: 0 auto;
+  width: 100%;
+  height: 90vh;
+}
+
+@media only screen and (max-width: 480px){
+  .sidenav{
+    width: 150px;
+  }
+  ::ng-deep .fc .fc-toolbar-title {
+    font-size: 15px;
+  }
+}

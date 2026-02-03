@@ -1,0 +1,32 @@
+.spacer {
+  flex: 1;
+}
+
+.nav-button-spacer {
+  flex: 0.01;
+}
+
+.nav {
+  background-color: #333333;
+}
+
+.button-row button,
+.button-row a {
+  margin-right: 8px;
+}
+
+.nav h1 {
+  color: #efefef;
+}
+
+.white-icon {
+  color: white;
+}
+
+.application-title:hover {
+  cursor: pointer;
+}
+
+.nav .menuButton {
+  color: white;
+}
