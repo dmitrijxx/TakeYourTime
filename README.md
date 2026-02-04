@@ -1,6 +1,6 @@
-# Abwesenheitsverwaltung (TakeYourTime)
+# Urlaubsverwaltung(TakeYourTime)
 
-Eine webbasierte Abwesenheitsverwaltung für Teams/Gruppen.<br>
+Eine webbasierte Abwesenheits/Urlaubsverwaltung für Teams/Gruppen.<br>
 Dieses Projekt entstand im Rahmen eines Universitätskurses und wurde als Teamprojekt mit drei Personen umgesetzt.<br>
 Die Anwendung ermöglicht es, Abwesenheiten wie Urlaube oder Krankheitstage zu erfassen und übersichtlich darzustellen.
 
